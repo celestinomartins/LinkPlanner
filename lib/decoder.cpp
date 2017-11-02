@@ -79,7 +79,7 @@ bool Decoder::runBlock(void) {
 			aux = aux / 2; //returns the quocient of the division
 		}*/
 		t_binary s_out;
-		vector<int> v(log2(m),0);
+		vector<int> v((int) log2(m),0);
 			/*for (int n = 0; n < log2(m); n++) {
 
 			if (n > 0) { s_out = aux % 2; }

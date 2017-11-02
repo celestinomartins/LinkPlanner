@@ -1,3 +1,13 @@
+2017-10-30
+TO BE DONE
+- documentar devidamente, MQAM Transmitter, colocar na library
+- colocar o sampler a funcionar com o clock externo
+- documentar MQAM Homodyne Receiver, colocar na library
+- duplicar os ficheiros homodyne_receiver.cpp -> m_qam_homodyne_receiver.cpp e no doc/library vai indicar que o homodyne_receiver (hist is not recommended. Use HISTOGRAM instead.)
+
+- colocar o cabeçalho do M-QAM Transmission System correto, ver 5.7 Quantum Oblivious Key Distribution with Discrete Variables
+
+
 2017-10-13
 TO BE DONE
 - estudo do sistem M-QAM com comparação de BER teórico e simulado (inialmente começamos por M = 4)

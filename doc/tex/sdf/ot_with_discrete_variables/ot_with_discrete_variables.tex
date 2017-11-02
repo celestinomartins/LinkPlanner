@@ -21,7 +21,7 @@ In order to implement OT between two parties (Alice and Bob) they must be able t
 \subsection{Quantum Oblivious Key Distribution System (QOKD)}
 
 In this section we are going to describe the Quantum Oblivious Key Distribution system (QOKD).
-The QOKD system enables two parties (Alice and Bob) share a set of keys only known by them. In this QOKD system the sets shared by Alice and Bob have some position bits which Bob measured with the same basis as Alice and other position bits which Bob measured with a different basis. In fact, these sets have tabs which mark sub-sets where they know there are the same number of right and wrong measurements.
+The QOKD system enables two parties (Alice and Bob) to share a set of keys. These keys have the particularity of being half right and half wrong. Only Bob knows which are right and wrong keys.
 
 Considering a discrete variables implementation, both Alice and Bob agree with the following correspondence, where $+$ corresponds to \textit{Rectilinear Basis} and $\times$ corresponds to \textit{Diagonal Basis},
 
@@ -121,7 +121,7 @@ and for \textit{Diagonal Basis}, "$\times$",
 
       Nevertheless, due to errors in transmission, some bits in $S_{B_{rb}}$ may be not right.
 
-      At this point, in order to test Bob's honesty and to estimate the \textit{QBER} of the channel, Alice is going to ask Bob to open some pairs of the Bob's sets. Alice chooses some positions to open and tells Bob which positions she wants to open. Bob sends to Alice the pairs she chose and then these pairs are destroyed from them sets. Lets assume she asked to open the positions $10$, $11$ and $12$. If she concludes Bob is not being honest, she stops the protocol and they must start it again. Otherwise, the protocol continues. Lets assume Alice has verified these pairs using the hash function committed by Bob and concluded that he is being honest. Therefore, she sends to Bob the \textit{QBER} estimated by her.
+      At this point, in order to test Bob's honesty and to estimate the \textit{QBER} of the channel, Alice is going to ask Bob to open some pairs of the Bob's sets. The definition of the protocol to test Bob's honesty is still an open issue. However, depending on the \textit{QBER} estimated by her, Alice must have a parameter to set the number of right position she wants to open, i.e she must open a minimum number of right position in order to guarantee a minimum \textit{QBER}. This will increase the security of the protocol. Alice chooses some positions to open and tells Bob which positions she wants to open. Bob sends to Alice the pairs she chose and then these pairs are eliminated from them sets. Lets assume she asked to open the positions $10$, $11$ and $12$. If she concludes Bob is not being honest, she stops the protocol and they must start it again. Otherwise, the protocol continues. Lets assume Alice has verified these pairs using the hash function committed by Bob and concluded that he is being honest. Therefore, she sends to Bob the \textit{QBER} estimated by her.
 
       Now, Bob has the previous sets replaced by the following,
       \begin{align*}
@@ -173,14 +173,16 @@ and for \textit{Diagonal Basis}, "$\times$",
               S_{B_{rp}} & = \{1,2,5,6,8 \} \\
               S_{B_{rb}} & = \{1,1,0,1,0 \} \\
             \end{align*}
+            
+             In order to test Alice's honesty, Bob must verify if the \textit{QBER} sent by Alice is a realistic value. If it is not he stops the protocol and they must start again. Otherwise, the protocol continues.
 
       \end{enumerate}
 
       After that, Bob needs to apply the Fake Cascade to the set $S_{B_{wb}}$. The main goal of this step is to convince Alice she is performing the real Cascade but she is not.
 
       \begin{enumerate}
-        \item First of all, based on the positions contained in $S_{B_{wb}}$, Bob must build an array with the correspondent bits in a random order and informs Alice the order of positions. In order to best explain this version of the algorithm, lets assume a larger set of bits. 
-            
+        \item First of all, based on the positions contained in $S_{B_{wb}}$, Bob must build an array with the correspondent bits in a random order and informs Alice the order of positions. In order to best explain this version of the algorithm, lets assume a larger set of bits.
+
             Bob sends to Alice throughout a classical channel the new positions order as if it were the permutation step represented in figure \ref{cascadepermutation} in real Cascade algorithm.
 
         \item Assuming each of them has a set with 32 bits randomly organized by Bob, they divide the supposed shifted keys in blocks with N bits according to the estimated error rate. As the \textit{QBER} is the same as for real cascade, Bob will assume the same number of errors, even if he starts for this modified version he can know the number of errors from \textit{QBER} estimated by Alice.
@@ -204,13 +206,18 @@ and for \textit{Diagonal Basis}, "$\times$",
               \item [Step 3:] They divide the sub-block in half again and Bob asks Alice for the parity of the first bit. Alice sends to him the parity equals to her. As the error is not in the first be, it must be in the second, therefore Bob is able to correct this bit with the information sent by Alice.
             \end{description}
 
-            Note that Bob make his choice of which half analyse first using a random bit generator result. If he got "0" he starts with the first half of the sub-block, otherwise, if he got "1", he starts with the second half. In addition, they must discard the last bit of the blocks and sub-blocks in which fake Cascade were applied in order to guarantee that Bob does not gain additional information.
+            Note that Bob make his choice of which half analyse first using a random bit generator result. If he got "0" \  he starts with the first half of the sub-block, otherwise, if he got "1", he starts with the second half. In addition, they must discard the last bit of each block and sub-block in which fake Cascade were applied in order to guarantee that Bob does not gain additional information.
 
-            After apply the fake Cascade to $S_{B_{wb}}$, it must remains the same,
-            $$S_{B_{wb}}  = \{0,1,1,1 \}.$$
+            In this case, after apply the fake Cascade to $S_{B_{wb}}$, lets assume,
+            \begin{align*}
+                S_{B_{wp}} & = \{3,4,7,9 \} \\
+                S_{B_{wb}} & = \{0,1,1,0 \}
+            \end{align*}
 
 
       \end{enumerate}
+      
+      If Bob starts by applying the fake Cascade, he must test Alice's honesty at the beginning of the real Cascade application, based on the number of errors he has. If he thinks that the \textit{QBER} sent by Alice is unrealistic, he stops the protocol at this point.
 
 
   \item When Alice sends to Bob a photons set, they are building a set of pairs (array positions and bit values which correspond to measured photons at Bob's side and to the key bit with the photon was encoded at Alice's side).
@@ -282,12 +289,12 @@ and for \textit{Diagonal Basis}, "$\times$",
         \centering
         \begin{tabular}{c|c c c c c c c c}
          $m$ & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
-             & 1 & 1 & 1 & 0 & 0 & 1 & 1 & 1 \\ \hline
-         $\oplus$ & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 \\
+             & 1 & 1 & 1 & 0 & 0 & 1 & 1 & 0 \\ \hline
+         $\oplus$ & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 0 \\
         \end{tabular}
         \end{table}
 
-      The first four bits corresponds to message 1 and he received $\{0,0,1,1\}$, which is the right message $m_{0}$ and $\{0,1,1,1\}$ which is a wrong message for $m_{1}$.
+      The first four bits corresponds to message 1 and he received $\{0,0,1,1\}$, which is the right message $m_{0}$ and $\{0,1,1,0\}$ which is a wrong message for $m_{1}$.
 
 
 \end{enumerate}
@@ -316,7 +323,7 @@ As one may see in figure \ref{toplevelsimulation} this simulation will have thre
 	\caption{Simulation diagram - Alice's side}\label{simulationalice}
 \end{figure}
 
-    In figure \ref{simulationalice} one can observe a block diagram of the simulation at Alice's side. As it is shown in the figure, Alice must have two blocks for random number generation: one for basis generation in order to polarize the photons according this basis, and other for key random generation in order to have a random state to encode each photon. Furthermore, she has a Processor block for all logical operations: array analysis, hash function results validation, and others. This block also receives the start information, i.e. message size s, the expansion factor k and messages $m_{0}$ and $m_{1}$, as well as information from Bob, i.e sets $I_{0}$ and $I_{1}$, hash function results, and others. This block also must be responsible for send classical information to Bob. Finally, Processor block will also send a real continuous time signal to single photon generator, in order to generate photons according to this signal, and finally this block also sends to polarizer a real discrete signal in order to inform the polarizer which basis it should use. Therefore, she has two more blocks for quantum tasks: the single photon generator and the polarizer block which is responsible to encode the photons generated from the previous block and send them throughout a quantum channel from Alice to Bob.
+    In figure \ref{simulationalice} one can observe a block diagram of the simulation at Alice's side. As it is shown in the figure, Alice must have one block for random number generation which is responsible for basis generation to polarize the photons, and for key random generation in order to have a random state to encode each photon. Furthermore, she has a Processor block for all logical operations: array analysis, hash function results validation, random number generation requests, and others. This block also receives the start information, i.e. message size s and messages $m_{0}$ and $m_{1}$, as well as information from Bob, i.e sets $I_{0}$ and $I_{1}$, hash function results, and others. In addition it is responsible for set the initial length $l$ of the first array of photons which will send to Bob. This block also must be responsible for send classical information to Bob. Finally, Processor block will also send a real continuous time signal to single photon generator, in order to generate photons according to this signal, and finally this block also sends to polarizer a real discrete signal in order to inform the polarizer which basis it should use. Therefore, she has two more blocks for quantum tasks: the single photon generator and the polarizer block which is responsible to encode the photons generated from the previous block and send them throughout a quantum channel from Alice to Bob.
 
     Finally, Alice's processor has an output to Mutual Information top level block, $Ms_{A}$.
 
@@ -328,7 +335,7 @@ As one may see in figure \ref{toplevelsimulation} this simulation will have thre
 	\caption{Simulation diagram - Bob's side}\label{simulationbob}
 \end{figure}
 
-    In figure \ref{simulationbob} one can observe a block diagram of the simulation at Bob's side. From this side, Bob only has one block for Random Number Generation which is responsible for randomly generate basis values which Bob will use to measure the photons sent by Alice throughout the quantum channel. Like Alice, Bob has a Processor block responsible for all logical tasks, i.e Hash function generation, analysing functions, etc. It receives information from Alice throughout a classical channel and a quantum channel but it sends information to Alice only throughout a classical channel. Furthermore, Bob has one more block for single photon detection which receives from processor block a real discrete time signal, in order to obtain the basis it should use to measure the photons.
+    In figure \ref{simulationbob} one can observe a block diagram of the simulation at Bob's side. From this side, Bob has one block for Random Number Generation which is responsible for randomly generate basis values which Bob will use to measure the photons sent by Alice throughout the quantum channel. Furthermore, this Block will generate the random bits that Bob needs in Modified Version of Cascade Algorithm. Like Alice, Bob has a Processor block responsible for all logical tasks, i.e Hash function generation, analysing functions, requests for random number generator block, etc. Additionally, it receives information from Alice throughout a classical channel and a quantum channel but it sends information to Alice only throughout a classical channel. Furthermore, Bob has one more block for single photon detection which receives from processor block a real discrete time signal, in order to obtain the basis it should use to measure the photons.
 
     Finally, Bob's processor has an output to Mutual Information top level block, $Ms_{B}$.
 

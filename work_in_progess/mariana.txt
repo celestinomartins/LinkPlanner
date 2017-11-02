@@ -1,3 +1,18 @@
+2017-10-27
+TO BE DONE
+	- parte experimental
+		- descrição do setup
+		- vá ao laboratório fala com o Prata, arranja uma mesa para trabalhar coloca na mesa todos os componentes do seu setup e uma folha com a descrição do projeto.
+		- diz-me os componentes que faltam (nõ existem? ou porque estão indisponiveis?)
+
+	- parte da simulação 
+		fazer análise igual à da "5.6.2 Simulation set-up", incluir as tabelas "System signals" (nome, tipo, status), "System input parameters:", "Sistem header files", "Sistem source files".
+
+	- apresentação 10-14 slides (atualizar)
+
+next meeting: terça-feira, 31/10, 14h 
+
+
 2017-10-24
 TO BE DONE
 - melhorar a descrição do algoritmo (para enviar ao Paulo Mateus)

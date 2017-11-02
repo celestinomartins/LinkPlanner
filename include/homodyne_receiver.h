@@ -116,7 +116,7 @@ public:
 
 	void setSamplingPeriod(double sPeriod) { B1.setSamplingPeriod(sPeriod); B9.setSamplingPeriod(sPeriod); };
 
-	void  setResponsivity(t_real Responsivity) { B3.responsivity = Responsivity; B4.responsivity = Responsivity; };
+	void  setResponsivity(t_real Responsivity) { B3.setResponsivity(Responsivity); B4.setResponsivity(Responsivity); };
 
 	//void setAmplification(t_real Amplification) { B5.amplification = Amplification; B6.amplification = Amplification; };
 	//void setNoiseAmplitude(t_real NoiseAmplitude) { B5.noiseamp = NoiseAmplitude; B6.noiseamp = NoiseAmplitude;};

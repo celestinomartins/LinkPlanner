@@ -1,3 +1,21 @@
+2017-10-31
+TO BE DONE
+	- presentation for group meeting (10 minutes)
+		- artigo RSS-DBP-TD-SSFM
+
+	- artigo RSS-DBP-TD-SSFM
+		- finalizar o abstract (revisão final)
+		- finalizar os gráficos + legendas (revisão final)
+		- escrever as conclusões
+		- melhorar a introdução, ser mais objetivo
+
+	- RoF
+		avançar com descrição da simulação
+			diagrama de blocos concluido
+			
+
+Next meeting: 3/11 (sexta), 9h30m
+
 2017-10-26
 TO BE DONE
 	- RoF

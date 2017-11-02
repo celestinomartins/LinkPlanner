@@ -35,6 +35,50 @@ For M$=4$ the symbol constellation is shown figure \ref{fig:MQAM_constellation}.
 
 M can take several values: $2, 4, 16, 32, ...$. The first two correspond to BPSK and QPSK modulation, respectively.
 
+\subsection{Bit Error Rate for 4-QAM with Additive White Gaussian Noise (AWGN) }
+
+When demodulating a signal it is necessary to associate the received signal to the corresponding signal. The existence of noise in the channel means that we can only compute the probability that a given signal corresponds to a certain carrier and that's why we need to define the Bit Error Rate (BER). Using
+
+\begin{equation}
+P_i f(s|c_i)>P_j f(s|c_j), \qquad i\neq j
+\end{equation}
+where $f(s|c_i)$ stands for the probability of detecting the signal $s$ given that $c_i$ was emmited. This inequallity can be rewritten in the following way
+
+\begin{equation}
+P(c_i|s)>P(c_j|s)
+\end{equation}
+where $P(c_i|s)$ and $P(c_j|s)$ are called \textit{a posteriori} probabilities and represent the probability that $c_i$ or $c_j$ were transmitted given that $s$ was received. In terms of the systems this simply means that we should select the signal most likely to have been transmitted.
+
+In the case of additive white gaussian noise the $f$ function is simply given by
+
+\begin{equation}
+f(s|c_i)=\frac{e^{-x^2/n_0}}{(\pi n_0)^{N/2}}
+\end{equation}
+where $x$ is the Euclidean distance in the I-Q plane between the signal received and carrier i and $N$ is the number of noise samples.
+
+When using 4-QAM modulation all points are at an equal distance from the origin (in the I-Q plane) so they all have the same energy given by
+
+\begin{equation}
+E=\frac{d^2}{2}
+\end{equation}
+where $d$ is the side of the square formed bye the constellation points.
+
+The probability that a given signal is identified correctly is given by
+
+\begin{equation}
+P_c=r^2
+\end{equation}
+where $n_0/2$ is the noise variance for AWGN and
+
+\begin{equation}
+r=\int_{-d/2}^{\infty}\frac{e^{-x^2/n_0}}{\sqrt{\pi n_0}} dx.
+\end{equation}
+
+The error probability, $P_e$, given by $1-P_c$ is given by
+
+\begin{equation}
+P_e=erfc \sqrt{\frac{E}{2 n_0}}.
+\end{equation}
 
 \subsection{Simulation setup}
 
