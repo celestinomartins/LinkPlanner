@@ -2,6 +2,7 @@
 
 # include "m_qam_transmitter.h"
 # include "i_homodyne_receiver.h"
+# include "bit_decider.h"
 # include "bit_error_rate.h"
 # include "local_oscillator.h"
 # include "balanced_beam_splitter.h"
@@ -17,19 +18,19 @@ int main(){
 	// #####################################################################################################
 
 	int numberOfBitsReceived(-1);
-	int numberOfBitsGenerated(40000);
+	int numberOfBitsGenerated(4000);
 	int samplesPerSymbol(16);
 	int pLength = 5;
 	double bitPeriod = 20e-12;
 	double rollOffFactor = 0.3;
 	double signalOutputPower_dBm = -20;
-	double localOscillatorPower_dBm = -20;
+	double localOscillatorPower_dBm = 0;
 	double localOscillatorPhase = 0;
 	vector<t_iqValues> iqAmplitudeValues = { {-1, 0} , {1, 0} };
 	array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2)} };
 	double responsivity = 1;
-	double amplification = 1;
-	double electricalNoiseAmplitude = 0;// 15.397586549153788;
+	double amplification = 1e6;
+	double electricalNoiseAmplitude = 5e-4*sqrt(2);
 	int samplesToSkip = 8 * samplesPerSymbol;
 	int bufferLength = 512;
 	bool shotNoise(false);
@@ -55,18 +56,15 @@ int main(){
 
 	TimeContinuousAmplitudeContinuousReal S5("S5.sgn");
 	S5.setBufferLength(bufferLength);
-
-	TimeContinuousAmplitudeContinuousReal S6("S6.sgn");
+	
+	TimeDiscreteAmplitudeContinuousReal S6("S6.sgn");
 	S6.setBufferLength(bufferLength);
 
-	TimeDiscreteAmplitudeContinuousReal S7("S7.sgn");
+	Binary S7("S7.sgn");
 	S7.setBufferLength(bufferLength);
 
 	Binary S8("S8.sgn");
 	S8.setBufferLength(bufferLength);
-
-	Binary S9("S9.sgn");
-	S9.setBufferLength(bufferLength);
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
@@ -96,36 +94,30 @@ int main(){
 	BalancedBeamSplitter B3{ vector<Signal*> {&S1, &S2}, vector<Signal*> {&S3, &S4} };
 	B3.setTransferMatrix(transferMatrix);
 
-	Photodiode B4{ vector<Signal*> {&S3, &S4}, vector<Signal*> {&S5} };
-	B4.useNoise(shotNoise);
+	I_HomodyneReceiver B4{ vector<Signal*> {&S3, &S4}, vector<Signal*> {&S5} };
+	B4.useShotNoise(true);
+	B4.setElectricalNoiseSpectralDensity(electricalNoiseAmplitude);
+	B4.setGain(amplification);
 	B4.setResponsivity(responsivity);
+	B4.setSaveInternalSignals(true);
 
-	TI_Amplifier B5{ vector<Signal*> {&S5}, vector<Signal*> {&S6} };
-	B5.setGain(amplification);
-	B5.setElectricalNoiseSpectralDensity(electricalNoiseAmplitude);
-	B5.setSaveInternalSignals(true);
-	B5.setSeeBeginningOfImpulseResponse(false);
-	B5.setImpulseResponseLength(16);
-	B5.setRollOffFactor(0);
-	B5.usePassiveFilterMode(true);
-
-	Sampler B6{ vector<Signal*> {&S6}, vector<Signal*> {&S7} };
-	B6.setSamplesToSkip(samplesToSkip);
+	Sampler B5{ vector<Signal*> {&S5}, vector<Signal*> {&S6} };
+	B5.setSamplesToSkip(samplesToSkip);
 	
-	BitDecider B7{ vector<Signal*> {&S7}, vector<Signal*> {&S8} };
+	BitDecider B6{ vector<Signal*> {&S6}, vector<Signal*> {&S7} };
 
-	BitErrorRate B8{ vector<Signal*> {&S0, &S8}, vector<Signal*> {&S9} };
+	BitErrorRate B7{ vector<Signal*> {&S0, &S7}, vector<Signal*> {&S8} };
 
-	Sink B9{ vector<Signal*> { &S9 }, vector<Signal*> {} };
-	B9.setNumberOfSamples(samplesPerSymbol*numberOfBitsGenerated);
-	B9.setDisplayNumberOfSamples(true);
+	Sink B8{ vector<Signal*> { &S8 }, vector<Signal*> {} };
+	B8.setNumberOfSamples(numberOfBitsGenerated);
+	B8.setDisplayNumberOfSamples(true);
 
 
 	// #####################################################################################################
 	// ########################### System Declaration and Inicialization ###################################
 	// #####################################################################################################
 
-	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9} };
+	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8} };
 
 	// #####################################################################################################
 	// #################################### System Run #####################################################

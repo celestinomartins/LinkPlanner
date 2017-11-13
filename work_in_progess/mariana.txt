@@ -1,3 +1,34 @@
+2017-11-02
+TO BE DONE
+	Apresentação 
+		- conluir apresentação 1º oblivious keys, 2º 1-out-2 OT, 3º QOKD
+
+	Simulacao
+		- criar o ficheiro qokd_sdf.cpp, partir do ficheiro m_qam_system_sdf.cpp
+
+	Experimental
+		- desenhar um setup experimental (ver o artigos BB84)
+
+	Estudar artigo
+		- artigo do Xu
+
+	Projetar a simulação do BB84
+		- Alice - Eve - Bob
+		
+
+2017-10-31
+TO BE DONE
+	- simulação
+		concluir a descrição do setupo de simulação, para podermos ver o status
+
+	- parte experimental
+		acabar a especificação
+
+	- apresentação
+		alterar ordem, 
+
+next meeting: quinta-feira, 15h, 2/11
+
 2017-10-27
 TO BE DONE
 	- parte experimental

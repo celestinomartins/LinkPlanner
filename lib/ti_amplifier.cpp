@@ -1,8 +1,7 @@
 #include "ti_amplifier.h"
 
 
-TI_Amplifier::TI_Amplifier(vector<Signal *> &inputSignal, vector<Signal *> &outputSignal) :SuperBlock(inputSignal, outputSignal)
-{
+TI_Amplifier::TI_Amplifier(vector<Signal *> &inputSignal, vector<Signal *> &outputSignal) :SuperBlock(inputSignal, outputSignal) {
 	inputSignals = inputSignal;
 	outputSignals = outputSignal;
 
@@ -10,14 +9,16 @@ TI_Amplifier::TI_Amplifier(vector<Signal *> &inputSignal, vector<Signal *> &outp
 	B2.initializeBlock(vector<Signal *> { }, vector<Signal *> {&TI_AMP02});
 	B3.initializeBlock(vector<Signal *> {&TI_AMP01, &TI_AMP02}, vector<Signal *> {&TI_AMP03});
 
-	if (bypassFilter)
+	setModuleBlocks({ &B1, &B2, &B3 });
+
+	/*if (bypassFilter)
 	{
-		setModuleBlocks({ &B1, &B2, &B3 });
+		
 	}
 	else
 	{
 		B4.initializeBlock(vector<Signal *> {&TI_AMP03}, vector<Signal *> {&TI_AMP04});
 		setModuleBlocks({ &B1, &B2, &B3, &B4 });
-	}
+	}*/
 
 };

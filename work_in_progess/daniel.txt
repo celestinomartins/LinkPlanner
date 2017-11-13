@@ -1,3 +1,9 @@
+2017-11-02
+TO BE DONE
+	- concluir doc BPSK (o que está no pdf, nomeadamente o BER em unidades log10)
+	- alterar o bloco BER, de modo a adicionar um parametro de entrada que com o nome, lowestMinorante{1E-10}
+	- alterar o bloco do BER para verificar se o BER estimado é inferior ao lowestMinorante se for inferior devolver uma mensagem de erro.
+
 2017-10-18
 TO BE DONE
 	- concluir o doc do BPSK

@@ -1,8 +1,23 @@
+2017-10-31
+TO BE DONE
+        Apresentação
+		- preparar apresentação, reunião de grupo (doc/sdf/ot_with_discrete_variables/slides)
+
+	Simulação
+		- criar o bloco real_to_complex, e inserir na simulação
+		- inserir o Ti Amplifier + Filtro
+		- verificar valores da constelação sem ruído (de forma quantitativa, corrente = potência ótica)
+		- incluir na simulation results, os resultados sem ruído
+
+	Setup experimental
+		- incluir a descrição do setup experimental
+		
+
 2017-10-20
 TO BE DONE
 	- melhorar a descrição teórica (medium priority)
         - concluir a descrição do setup a simular
-        - identificar os blocos que crias-te novos no simulador (*.cpp)
+        - identificar os blocos que criaste novos no simulador (*.cpp)
 		- diff
 		- photodiode
 	- fazer a parte do doc\lib para os novos blocos e rever os outros

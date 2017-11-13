@@ -173,7 +173,7 @@ and for \textit{Diagonal Basis}, "$\times$",
               S_{B_{rp}} & = \{1,2,5,6,8 \} \\
               S_{B_{rb}} & = \{1,1,0,1,0 \} \\
             \end{align*}
-            
+
              In order to test Alice's honesty, Bob must verify if the \textit{QBER} sent by Alice is a realistic value. If it is not he stops the protocol and they must start again. Otherwise, the protocol continues.
 
       \end{enumerate}
@@ -216,7 +216,7 @@ and for \textit{Diagonal Basis}, "$\times$",
 
 
       \end{enumerate}
-      
+
       If Bob starts by applying the fake Cascade, he must test Alice's honesty at the beginning of the real Cascade application, based on the number of errors he has. If he thinks that the \textit{QBER} sent by Alice is unrealistic, he stops the protocol at this point.
 
 
@@ -327,6 +327,7 @@ As one may see in figure \ref{toplevelsimulation} this simulation will have thre
 
     Finally, Alice's processor has an output to Mutual Information top level block, $Ms_{A}$.
 
+
   \item
 
   \begin{figure}[h]
@@ -340,27 +341,144 @@ As one may see in figure \ref{toplevelsimulation} this simulation will have thre
     Finally, Bob's processor has an output to Mutual Information top level block, $Ms_{B}$.
 
   \item Mutual Information calculation
-  \item
-  \item
-  \item
+
 \end{enumerate}
 
 
+\begin{table}[hbt]
+\centering
+\caption{System Signals}
+\label{my-label}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Signal name} & \textbf{Signal type} & \textbf{Status} \\ \hline
+NUM\_A                &  Binary signal       &                 \\ \hline
+NUM\_B                &  Binary signal       &                 \\ \hline
+CLK\_A                &  Real continuous Time&                 \\ \hline
+CLK\_B                &  Real continuous Time&                 \\ \hline
+C\_A\_B                &  Message             &                 \\ \hline
+C\_B\_A                &  Message             &                 \\ \hline
+S\_A1                 &  Real continuous Time&                 \\ \hline
+S\_A2                 &  Real discrete   Time&                 \\ \hline
+S\_A3                 &  Photon Stream       &                 \\ \hline
+Q\_A\_B                &  Photon Stream       &                 \\ \hline
+Ms\_A                 &  Message             &                 \\ \hline
+Ms\_B                 &  Message             &                 \\ \hline
+S\_B1                 &  Real continuous Time&                 \\ \hline
+S\_B2                 &  Real continuous Time&                 \\ \hline
 
+\end{tabular}
+\end{table}
 
+\begin{table}[H]
+\centering
+\caption{System input parameters}
+\label{my-label}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Parameter} & \textbf{Default Value} & \textbf{Description}                   \\ \hline
+messageSize                              & 4                                           & Size of the message Alice must send to Bob.\\ \hline
+blockLenght                              & 16                                          & Block length.                                                  \\ \hline
+systemRate                               &                                             &                                                 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Header Files}
+\label{tab:headerfiles}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{File name}           & \textbf{Description}  & \textbf{Status}       \\ \hline
+random\_number\_generator.h  &                       &                       \\ \hline
+real\_continuous\_time.h     &                       &                       \\ \hline
+real\_discrete\_time.h       &                       &                       \\ \hline
+single\_photons\_generator.h &                       &                       \\ \hline
+single\_photons\_detector.h  &                       &                       \\ \hline
+encorder.h                   &                       &                       \\ \hline
+decoder.h                    &                       &                       \\ \hline
+message\_toSend.h              &                       &                       \\ \hline
+message\_toReceive.h           &                       &                       \\ \hline
+alice\_tasks.h               &                       &                       \\ \hline
+Bob\_tasks.h                 &                       &                       \\ \hline
+mutual\_information.h        &                       &                       \\ \hline
+cascade\_truth.h               &                       &                       \\ \hline
+cascade\_fake.h                &                       &                       \\ \hline
+Sha256.h                     &                       &                       \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Source Files}
+\label{tab:sourcefiles}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{File name}           & \textbf{Description}  & \textbf{Status}       \\ \hline
+random\_number\_generator.c  &                       &                       \\ \hline
+real\_continuous\_time.c     &                       &                       \\ \hline
+real\_discrete\_time.c       &                       &                       \\ \hline
+single\_photons\_generator.c &                       &                       \\ \hline
+single\_photons\_detector.c  &                       &                       \\ \hline
+encorder.c                   &                       &                       \\ \hline
+decoder.c                    &                       &                       \\ \hline
+message\_toSend.c              &                       &                       \\ \hline
+message\_toReceive.c           &                       &                       \\ \hline
+alice\_tasks.c               &                       &                       \\ \hline
+Bob\_tasks.c                 &                       &                       \\ \hline
+mutual\_information.c        &                       &                       \\ \hline
+QOKD\_main.c                 &                       &                       \\ \hline
+cascade\_truth.c               &                       &                       \\ \hline
+cascade\_fake.c                &                       &                       \\ \hline
+Sha256.c                     &                       &                       \\ \hline
+\end{tabular}
+\end{table}
 
 \subsection{Experimental}
-In figures \ref{quantumchannelcommunication1} and \ref{quantumchannelcommunication2} are presented the experimental setup to be performed in the lab. Starting with Alice's side and then Bob's side.
+In figures \ref{quantumchannelcommunication1} and \ref{quantumchannelcommunication2} are presented the experimental setup to be performed in the lab. Starting with Alice's side and then Bob's side. The main goal is to build an experimental setup in with Alice and Bob communicate through two classical channels and one quantum channel that will have only one direction (Alice to Bob).
 
-\begin{figure}[H]
-	\centering \includegraphics[width=0.8\textwidth,height=8cm]{./sdf/ot_with_discrete_variables/figures/OT_experimental_alice.png}
-	\caption{Quantum communication diagram - Alice's side}\label{quantumchannelcommunication1}
-\end{figure}
+\begin{enumerate}
+  \item In figure \ref{quantumchannelcommunication1} is presented Alice's side in quantum communication. In order to generate single photons, we will start by using as light source a laser semiconductor with $1550nm$. After that, we need a \textbf{MPC} (manual polarization controller) to maximize the number of photons that output the \textbf{MZM} (Mach-Zehnder modulator). Next, there is an \textbf{OS} (Optical splitter 1 to 4, 25:25:25:25) which will split the light through the 4 arms equally.  Afterwards, there are four arms with a \textbf{MPC}, a \textbf{LP} (Linear Polarizer) which allows the photon passes through one of the considered basis, rectilinear ($0^{\circ}$ or $90^{\circ}$) or diagonal ($45^{\circ}$ or $-45^{\circ}$) and a \textbf{VOA} (Variable Optical Attenuator) in order to achieve the single-photon regime. Afterwards, there is a \textbf{Optical Demux 4x1}, which is connected to Alice Processor in order to receive a random number from the RNG contained in the processor, and according to the classical bit received the photon will go to the upper or down arm. This random number generated by Alice is '$0$' or '$1$' depending on the basis she wants use to encode the photon. After that, the photon follows its path to Bob through a quantum channel.
 
-\begin{figure}[H]
-	\centering \includegraphics[width=0.8\textwidth,height=9cm]{./sdf/ot_with_discrete_variables/figures/OT_experimental_bob.png}
-	\caption{Quantum communication diagram - Bob's side}\label{quantumchannelcommunication2}
-\end{figure}
+
+        \begin{figure}[H]
+        	\centering \includegraphics[width=1.1\textwidth,height=8cm]{./sdf/ot_with_discrete_variables/figures/experimental_alice.png}
+        	\caption{Quantum communication diagram - Alice's side}\label{quantumchannelcommunication1}
+        \end{figure}
+
+  \item In figure \ref{quantumchannelcommunication2} is presented Bob's side in the quantum communication between he and Alice. The photons came to Bob's side through an optical fiber and it reaches an \textbf{OS} (Optical switch) controlled by Bob's processor which has a \textbf{RNG} (Random number generator) that chooses the basis Bob will use to measure the photons. This switch will forward the photon through the upper or lower arm. If photon goes through the upper arm, it will be measured using a linear basis. Otherwise, if it goes through the lower arm it will be measured using a diagonal basis. At the end, there are two detector \textbf{D1} and \textbf{D2} which are responsible to detect the photons that came and send a signal of measurement to Bob's processor.
+
+        \begin{figure}[H]
+        	\centering \includegraphics[width=1.0\textwidth,height=6cm]{./sdf/ot_with_discrete_variables/figures/experimental_bob.png}
+        	\caption{Quantum communication diagram - Bob's side}\label{quantumchannelcommunication2}
+        \end{figure}
+
+\end{enumerate}
+
+Furthermore, the two processors (Alice and Bob) must be able to communicate in a bi-directional classical channel to exchange all information that they need.
+
+In table \ref{tb:mat} are described all components needed to build the experimental setup.
+
+\begin{table}[hbt]
+\centering
+\caption{List of material}
+\label{tb:mat}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Material Name}     & \textbf{Quantity} & \textbf{Status} \\ \hline
+Laser semiconductor 1550nm & 1                 &  \checkmark     \\ \hline
+Manual polarization controller    & 5                 &       \\ \hline
+       Linear Polarizer    & 6                 & \\ \hline
+Mach-Zehnder Modulator     & 1                 &  \checkmark 2.56GHz   \\ \hline
+Single Photon Detector     & 2                 &  \checkmark     \\ \hline
+Optical Splitter           & 1                 &     \\ \hline
+Optical switch            & 1                 &\checkmark, 5KHz-1MHz\\ \hline
+Optical Demux 4x1 & 1                 &  \checkmark   50/50  \\ \hline
+Variable Optical Attenuator & 4                 &  \checkmark     \\ \hline
+Computer                    & 1                 &     \\ \hline
+\end{tabular}
+\end{table}
+
 
 \bibliographystyle{unsrt}
 

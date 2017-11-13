@@ -3,14 +3,10 @@
 
 # include "netxpto.h"
 
-# include "sampler.h"
-# include "local_oscillator.h"
-# include "balanced_beam_splitter.h"
 # include "photodiode_old.h"
-# include "ti_amplifier.h"
-# include "electrical_filter.h"
-# include "bit_decider.h"
-
+# include "ideal_amplifier.h"
+# include "white_noise.h"
+# include "add.h"
 
 // Balanced Homodyne Receiver superblock
 class I_HomodyneReceiver : public SuperBlock {
@@ -21,8 +17,11 @@ class I_HomodyneReceiver : public SuperBlock {
 
 	TimeContinuousAmplitudeContinuousReal I_HMD01{ "I_HMD01.sgn" }; // Detected and Subtracted -> 4*S*LO
 
-	TimeContinuousAmplitudeContinuousReal I_HMD02{ "I_HMD02.sgn" }; // Amplified, Noisy and Filtered
+	TimeContinuousAmplitudeContinuousReal I_HMD02{ "I_HMD02.sgn" }; // Amplified
+	
+	TimeContinuousAmplitudeContinuousReal I_HMD03{ "I_HMD03.sgn" }; // Noise  Noisy and Filtered
 
+	TimeContinuousAmplitudeContinuousReal I_HMD04{ "I_HMD04.sgn" }; // Added  
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
@@ -30,7 +29,11 @@ class I_HomodyneReceiver : public SuperBlock {
 
 	Photodiode B1;
 
-	TI_Amplifier B2;
+	IdealAmplifier B2;
+
+	WhiteNoise B3;
+
+	Add B4;
 
 	/* State Variables */
 
@@ -61,11 +64,11 @@ public:
 	void setGain(double Gain) { B2.setGain(Gain); }
     double const getGain(void) { return B2.getGain(); };
     
-	void setElectricalNoiseSpectralDensity(double eNoiseSpectralDensity) { B2.setElectricalNoiseSpectralDensity(eNoiseSpectralDensity); }
-	double const getElectricalNoiseSpectralDensity(void) { return B2.getElectricalNoiseSpectralDensity(); }
+	void setElectricalNoiseSpectralDensity(double eNoiseSpectralDensity) { B3.setNoiseSpectralDensity(eNoiseSpectralDensity); }
+	double const getElectricalNoiseSpectralDensity(void) { return B3.getNoiseSpectralDensity(); }
     
     
-    void setRollOffFactor(double rOffFactor) {B2.setRollOffFactor(rOffFactor); }
+/*    void setRollOffFactor(double rOffFactor) {B2.setRollOffFactor(rOffFactor); }
 	double const getRollOffFactor(void) { return B2.getRollOffFactor(); };
     
     void setImpulseResponseTimeLength(int impResponseTimeLength) {B2.setImpulseResponseTimeLength(impResponseTimeLength); };
@@ -74,7 +77,7 @@ public:
     void setImpulseResponseLength(int impResponseLength) {B2.setImpulseResponseLength(impResponseLength); }
     int const getImpulseResponseLength(void) { return B2.getImpulseResponseLength();};
     
-	void usePassiveFilterMode(bool pFilterMode){ B2.usePassiveFilterMode(pFilterMode); }
+	void usePassiveFilterMode(bool pFilterMode){ B2.usePassiveFilterMode(pFilterMode); }*/
 };
 
 #endif

@@ -1,3 +1,34 @@
+2017-11-01
+TO BE DONE
+	- presentation for group meeting (10 minutes)
+		- artigo RSS-DBP-TD-SSFM
+
+	- RoF
+		ler o artigo do Tiago (ICTON)
+		apresentar um diagrama de blocos detalhado para o transmissor, o objetivo será reproduzir o resultado da Fig. 2
+
+	- artigo RSS-DBP-TD-SSFM
+		- titulo (revisão final)
+		- finalizar o abstract (revisão final)
+
+		- gráficos
+			fig 1a -> melhorar 
+			fig 1b -> melhorar
+			fig 2 -> ok
+			fig 3 -> ok
+			fig 4 -> ok
+			fig 5 -> ok
+			fig 6 -> ok
+			fig 7 -> ok
+
+		- legendar corretamente todas as figuras
+
+		- escrever as conclusões
+		- melhorar a introdução, ser mais objetivo
+
+NEXT Meeting: quarta-feira, 14h 
+
+
 2017-10-31
 TO BE DONE
 	- presentation for group meeting (10 minutes)

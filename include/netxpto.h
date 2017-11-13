@@ -10,13 +10,13 @@
 # include <functional>	// bind1st
 
 
-const int MAX_NAME_SIZE = 256;  // Maximum size of names
-const long int MAX_Sink_LENGTH = 100000;  // Maximum Sink Block number of values
-const int MAX_BUFFER_LENGTH = 10000;  // Maximum Signal buffer length
-const int MAX_TOPOLOGY_SIZE = 100;  // Maximum System topology size 
-const int MAX_TAPS = 1000;  // Maximum Taps Number
-const double PI = 3.1415926535897932384;
-const double SPEED_OF_LIGHT = 299792458;
+const int MAX_NAME_SIZE = 256;					// Maximum size of names
+const long int MAX_Sink_LENGTH = 100000;		// Maximum Sink Block number of values
+const int MAX_BUFFER_LENGTH = 10000;			// Maximum Signal buffer length
+const int MAX_TOPOLOGY_SIZE = 100;				// Maximum System topology size 
+const int MAX_TAPS = 1000;						// Maximum Taps Number
+const double PI = 3.1415926535897932384;		// Value of pi
+const double SPEED_OF_LIGHT = 299792458;		// Speed of light in vaccum
 const double PLANCK_CONSTANT = 6.626070040e-34; // NIST
 const int MAX_NUMBER_OF_PATHS = 2;
 
@@ -401,7 +401,6 @@ class Block {
 
 	void terminateBlock();
 	virtual void terminate(void){};
-	
 };
 
 

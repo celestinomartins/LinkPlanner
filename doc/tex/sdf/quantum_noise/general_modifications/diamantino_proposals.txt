@@ -1,0 +1,59 @@
+General compilation problems:
+
+
+"'=': conversion from 'size_t' to 't_integer', possible loss of data"
+
+	include\m_qam_transmitter.h
+104	B2.m é t_integer e iqAmplitudesValues.size() is size_t.
+	Introduce castings
+
+	lib\m_qam_transmitter.cpp
+6	numberOfInputSignals é int e inputSignal.size() is size_t.
+7	(same)
+
+	lib\super_block_interface.cpp
+10	numberOfInputSignals é int e inputSignals.size() is size_t.
+11	(same)
+
+	lib\sampler.cpp
+22	numberOfInputSignals é int, inputSignals.size() is size_t.
+
+	lib\netxpto.cpp
+554	int space para size_t inputBufferTimeDomain.size()
+572	(same)
+573	(same)
+912	Nblocks é int e v_in.size() é size_t.
+1039	'n' is of type "size_t", but is being converted to uint, when is compared with "levels".
+
+
+	lib\m_qam_mapper.cpp
+87	m is "t_integer", and "iqAmplitudesValues.size()" is "size_t".
+
+
+GENERAL SOLUTION:
+Introduce a casting (int) or (t_integer) in variable of type "size_t".
+Note: "size_t" has size equal to the size fo the biggest memory address. In this case, it is a unsigned long int or a uint64_t.
+
+
+
+
+"warning C4715: 'Sampler::runBlock': not all control paths return a value"
+
+	lib\sampler.cpp
+58	return true/false missing.
+
+
+
+
+DEAD CODE:
+	local_oscillator.cpp
+33	deltaPhase exists for nothing.
+
+
+
+
+CODE TO BE CHANGED:
+	local_oscillator.cpp
+39	out = .5*sqrt(opticalPower)*out
+	to
+	out = sqrt(0.5*opticalPower)*out

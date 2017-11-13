@@ -36,7 +36,13 @@
     <ClCompile Include="..\..\lib\sink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="simplified_coherent_receiver_sdf.cpp">
+    <ClCompile Include="..\..\lib\local_oscillator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kramers_kronig_transceiver_sdf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="m_pam_mapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +66,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\sink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\local_oscillator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="m_pam_mapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

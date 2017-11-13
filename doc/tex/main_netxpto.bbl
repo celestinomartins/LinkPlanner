@@ -1,18 +1,31 @@
 \begin{thebibliography}{1}
 
-\bibitem{loudon2000}
-Rodney Loudon.
-\newblock {\em The Quantum Theory of Light}.
-\newblock Oxford University Press, 2000.
+\bibitem{thorlabs}
+Thorlabs.
+\newblock {\em Thorlabs Balance Amplified Photodetectors: PDB4xx Series
+  Operation Manual}, 2014.
 
-\bibitem{fox2006}
-Mark Fox.
-\newblock {\em Quantum Optics: An Introduction}.
-\newblock Oxford University Press, 2006.
+\bibitem{namiki2003security}
+Ryo Namiki and Takuya Hirano.
+\newblock Security of quantum cryptography using balanced homodyne detection.
+\newblock {\em Physical Review A}, 67(2):022308, 2003.
 
-\bibitem{hans2004}
-Hans-A. Bachor and Timothy~C. Ralph.
-\newblock {\em A Guide to Experiments in Quantum Optics}.
-\newblock Wiley-VCH, 2004.
+\bibitem{Liu2009}
+Tie-Ming Liu, Lie-hui Jiang, Hong-qi He, Ji-zhong Li, and Xian Yu.
+\newblock {\em Researching on Cryptographic Algorithm Recognition Based on
+  Static Characteristic-Code}, pages 140--147.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2009.
+
+\bibitem{Brassard1994}
+Gilles Brassard and Louis Salvail.
+\newblock {\em Secret-Key Reconciliation by Public Discussion}, pages 410--423.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1994.
+
+\bibitem{almeida2016continuous}
+{\'A}lvaro~J Almeida, Nelson~J Muga, Nuno~A Silva, Jo{\~a}o~M Prata, Paulo~S
+  Andr{\'e}, and Armando~N Pinto.
+\newblock Continuous control of random polarization rotations for quantum
+  communications.
+\newblock {\em Journal of Lightwave Technology}, 34(16):3914--3922, 2016.
 
 \end{thebibliography}

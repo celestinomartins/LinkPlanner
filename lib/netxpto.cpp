@@ -203,7 +203,6 @@ Block::Block(vector<Signal*> &InputSig, vector<Signal*> &OutputSig) {
 
 	inputSignals = InputSig;
 	outputSignals = OutputSig;
-
 }
 
 void Block::initializeBlock(vector<Signal*> &InputSig, vector<Signal*> &OutputSig) {
