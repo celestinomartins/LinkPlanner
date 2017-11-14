@@ -32,12 +32,12 @@ In addition, the RoF technology can be implemented as analog RoF or digital RoF:
 \subsection{Simulation}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\linewidth]{./sdf/radio_over_fiber/figures/block_diagram_flow.pdf}
-    \caption{Simulation setup for the uplink of RoF transmission system. Complex Gaussian (CG); }
+    \includegraphics[width=\linewidth]{./sdf/radio_over_fiber/figures/block_diagram_flow_simp.pdf}
+    \caption{Simulation setup for the uplink of RoF transmission system; }
     \label{fig_RoFdiagram}
 \end{figure}
 
- Figure~\ref{fig_RoFdiagram} depicts the simulation setup for an uplink of RoF, providing the connection between BS to CPU. At BS, we model the RF signal received from a mobile terminal, as zero mean complex gaussian (CG) signal with a given bandwidth imposed by the low pass filter, Filter-1. The generated baseband signal is then up-converted to RF carrier frequency by utilizing an oscillator and a mixer. In this simulation we consider the RF carrier frequency between 2 to 5 GHz, according to the 5G technologies specifications. The generated RF passband signal modulates optical carrier by utilizing a laser and a mach-zehnder modulator (MZM). The optical signal is then transmitted to CPU using optical fiber. In CPU, the optical signal is detected by a PIN, amplified and followed with an electrical filter. After these operations, digital signal processing techniques can be applied to recover the transmitted signal.
+ Figure~\ref{fig_RoFdiagram} depicts the simulation setup for an uplink of RoF, providing the connection between BS to CPU. At BS, we model the RF signal received from a mobile terminal, as zero mean complex gaussian (CG) signal with a given bandwidth imposed by the low pass filter, Filter-1. The generated baseband signal is then up-converted to RF carrier frequency by utilizing an oscillator and a mixer. In this simulation we consider the RF carrier frequency between 2 to 5 GHz, according to the 5G technologies specifications. The generated RF passband signal modulates optical carrier by utilizing a laser and a single driver mach-zehnder modulator (MZM). The optical signal is then transmitted to CPU using optical fiber. In CPU, the optical signal is detected by a PIN, amplified and followed with an electrical filter. After these operations, digital signal processing techniques can be applied to recover the transmitted signal.
 
 \input{./sdf/radio_over_fiber/tables/system_input_parameters}
 \input{./sdf/radio_over_fiber/tables/header_files}
