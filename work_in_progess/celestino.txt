@@ -1,3 +1,51 @@
+2017-11-16
+TO BE DONE
+
+	- RoF
+		Theoretical analysis - basear-me no artigo da Globecomm até ao sinal da figura 2, reproduzir o sinal da figura 2 (teórica)
+		Onde é que eu meço o sinal da figura 2 na simulação Densidade Espectral de Potência da potência do sinal S7 ?
+
+	- artigo RSS-DBP-TD-SSFM
+		
+		- limar o abstract (melhorias finais)
+
+	- gráficos
+		- melhorar fig 1a) e 1b), com a legenda
+		- acabar fig 2, com a legenda
+		- finalizar fig 3, com a legenda
+		- finalizar fig 4, com a legenda
+		- finalizar fig 5, com a legenda
+
+	- melhorar conclusão
+
+
+2017-11-14
+TO BE DONE
+
+	- RoF
+		Theoretical analysis - basear-me no artigo da Globecomm até ao sinal da figura 2, reproduzir o sinal da figura 2 (teórica)
+		Onde é que eu meço o sinal da figura 2 na simulação Densidade Espectral de Potência da potência do sinal S7 ?
+
+		
+	
+
+		- gráficos
+			fig 1a -> melhorar (1 span)
+			fig 1b -> melhorar (eixo doas xx no dominio do tempo e chamar aos slots S1 e S2)
+			fig 2 -> substituir band por slot
+			fig 5 -> Quantization Precision (bits)
+			fig 6 -> uniformizar o aspecto com ográfico 4 e 5
+			fig 7 -> DS-R-TD-DBP
+
+		- legendar corretamente todas as figuras (melhorar)
+
+		- escrever as conclusões
+		- melhorar a introdução, ser mais objetivo
+
+NEXT Meeting: quinta-feira, 14h 
+
+
+
 2017-11-01
 TO BE DONE
 	- presentation for group meeting (10 minutes)
