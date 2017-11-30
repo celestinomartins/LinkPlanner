@@ -1,3 +1,20 @@
+2017-11-30
+TO BE DONE
+
+	- RoF, (aguardar o contacto até meio da semana se ele não contactar voltar a ligar ao aluno do Prof.Rui Dinis)
+		Theoretical analysis - basear-me no artigo da Globecomm até ao sinal da figura 2, reproduzir o sinal da figura 2 (teórica)
+		Onde é que eu meço o sinal da figura 2 na simulação Densidade Espectral de Potência da potência do sinal S7 ?
+		Qual a forma do filtro eletrico depois do PIN?
+
+
+
+	- gráficos
+		colocar a figura 1 consistente com a expressão (1), ver que expressões é que são necessárias
+		- melhorar a Figura 7
+		- completar a figura 8 com os pontos que faltam, e melhora r legenda
+
+Next meeting: 6/12, 15h
+
 2017-11-22
 TO BE DONE
 
