@@ -32,7 +32,8 @@ bool phaseShifter::runBlock(void) {
 
 	t_complex imaginary = (0, 1);
 
-	for (int i = 0; i < process; i++) {
+	for (int i = 0; i < process; i++) 
+	{
 
 		t_complex input;
 		inputSignals[0]->bufferGet(&input);

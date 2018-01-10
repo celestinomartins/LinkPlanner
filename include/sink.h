@@ -15,7 +15,7 @@ public:
 	long int numberOfSamples{ -1 };
 
 	/* Methods */
-
+	Sink() {};
 	Sink(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
 
 	bool runBlock(void);

@@ -54,7 +54,6 @@ void MQamMapper::initialize(void){
 
 bool MQamMapper::runBlock(void) {
 
-
 	int ready = inputSignals[0]->ready();
 	int space1 = outputSignals[0]->space();
 	int space2 = outputSignals[1]->space();
@@ -84,7 +83,7 @@ bool MQamMapper::runBlock(void) {
 }
 
 void MQamMapper::setIqAmplitudes(vector<t_iqValues> iqAmplitudesValues){
-	m = iqAmplitudesValues.size();
+	m = (int) iqAmplitudesValues.size();
 	iqAmplitudes.resize(m);
 	iqAmplitudes = iqAmplitudesValues; 
 };

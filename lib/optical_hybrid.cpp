@@ -60,7 +60,7 @@ bool OpticalHybrid::runBlock(void){
 	if (process == 0) return false;
 
 	complex<double> imaginary(0, 1);
-	
+		 
 	complex<double> div(0.5, 0);
 
 	for (int i = 0; i < process; i++) {

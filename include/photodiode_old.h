@@ -1,5 +1,5 @@
-# ifndef PROGRAM_INCLUDE_PHOTODIODE_H_
-# define PROGRAM_INCLUDE_PHOTODIODE_H_
+# ifndef PROGRAM_INCLUDE_PHOTODIODE_OLD_H_
+# define PROGRAM_INCLUDE_PHOTODIODE_OLD_H_
 
 # include "netxpto.h"
 #include <random>
@@ -43,4 +43,4 @@ private:
 };
 
 
-#endif // !PROGRAM_INCLUDE_PHOTODIODE_H_
+#endif // !PROGRAM_INCLUDE_PHOTODIODE_OLD_H_
