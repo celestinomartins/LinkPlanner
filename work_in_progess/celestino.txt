@@ -1,6 +1,10 @@
 2018-01-10
 TO BE DONE
-	- 
+	- organização do capítulo vai seguir o capítulo BPSK_system
+	- definição e motivação do problema
+	- descrição teória do algoritmo, baseado no artigo que há-de estar na bibliografia
+
+Next meeting: 16/1, 15h
 
 2017-12-06
 TO BE DONE
