@@ -6,7 +6,7 @@
 
 using namespace std;
 
-enum PulseShaperFilter { RaisedCosine, Gaussian };
+enum PulseShaperFilter { RaisedCosine, Gaussian, Square };
 
 /* Raised-cosine filter FIR implementation. */
 class PulseShaper : public FIR_Filter{

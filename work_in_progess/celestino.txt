@@ -1,3 +1,24 @@
+2018-01-10
+TO BE DONE
+	- organização do capítulo vai seguir o capítulo BPSK_system
+	- definição e motivação do problema
+	- descrição teória do algoritmo, baseado no artigo que há-de estar na bibliografia
+
+Next meeting: 16/1, 15h
+
+2017-12-06
+TO BE DONE
+
+	- RoF, (aguardar o contacto até meio da semana se ele não contactar voltar a ligar ao aluno do Prof.Rui Dinis)
+		Theoretical analysis - basear-me no artigo da Globecomm até ao sinal da figura 2, reproduzir o sinal da figura 2 (teórica)
+		Onde é que eu meço o sinal da figura 2 na simulação Densidade Espectral de Potência da potência do sinal S7 ?
+		Qual a forma do filtro eletrico depois do PIN?
+
+	- paper, enviar-me o pdf até ao final da semana, para rever até á próxima reunião
+
+next meeting: 13/12, 15h
+
+
 2017-11-30
 TO BE DONE
 

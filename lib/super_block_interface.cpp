@@ -7,8 +7,8 @@ using namespace std;
 
 
 SuperBlockInterface::SuperBlockInterface(vector<Signal *> &inputSignals, vector<Signal *> &outputSignals) :Block(inputSignals, outputSignals) {
-	numberOfInputSignals = inputSignals.size();
-	numberOfOutputSignals = outputSignals.size();
+	numberOfInputSignals = (int) inputSignals.size();
+	numberOfOutputSignals = (int) outputSignals.size();
 
 	inputSignals = inputSignals;
 	outputSignals = outputSignals;

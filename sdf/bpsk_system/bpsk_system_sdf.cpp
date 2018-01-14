@@ -18,7 +18,7 @@ int main(){
 	// #####################################################################################################
 
 	int numberOfBitsReceived(-1);
-	int numberOfBitsGenerated(4000);
+	int numberOfBitsGenerated(1000);
 	int samplesPerSymbol(16);
 	int pLength = 5;
 	double bitPeriod = 20e-12;
@@ -32,7 +32,7 @@ int main(){
 	double amplification = 1e6;
 	double electricalNoiseAmplitude = 5e-4*sqrt(2);
 	int samplesToSkip = 8 * samplesPerSymbol;
-	int bufferLength = 512;
+	int bufferLength = 20;
 	bool shotNoise(false);
 		
 	// #####################################################################################################

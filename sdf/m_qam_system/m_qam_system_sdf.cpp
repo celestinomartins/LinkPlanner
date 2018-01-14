@@ -1,7 +1,7 @@
 # include "netxpto.h"
 
 # include "m_qam_transmitter.h"
-# include "homodyne_receiver.h"
+# include "homodyne_receiver_20171203.h"
 # include "bit_error_rate.h"
 # include "sink.h"
 
@@ -11,47 +11,28 @@ int main(){
 	// #################################### System Input Parameters ########################################
 	// #####################################################################################################
 
-	t_integer numberOfBitsGenerated(1000);
-	t_integer samplesPerSymbol(32);
-	t_integer pLength = 5;
+	t_integer numberOfBitsGenerated(4000);
+	t_integer samplesPerSymbol(16);
 	t_real bitPeriod = 1.0 / 50e9;
-	t_real rollOffFactor = 0.3;
-	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
-	t_real signalOutputPower_dBm = -20;
-
-
-	// #####################################################################################################
-	// ########################### Signals Declaration and Inicialization ##################################
-	// #####################################################################################################
-
+	t_real rollOffFactor = 0.9;
+	t_real signalOutputPower_dBm = 0;
 	int numberOfBitsReceived(-1);
-	//int numberOfBitsGenerated = 10;
-	//double bitPeriod = 1.0 / 50e9;
-
-	int prbsPatternLength = 5;
-
-	vector<t_iqValues> iqAmplitudeValues = { { 1.0, 1.0 },{ -1.0, 1.0 },{ -1.0, -1.0 },{ 1.0, -1.0 } };
-	
-	//double rollOffFactor = 0.3;
-
-	//int samplesPerSymbol = 16;
+	int prbsPatternLength = 7;
+	vector<t_iqValues> iqAmplitudeValues = { { 1.0, 1.0 },{ -1.0, 1.0 },{ 1.0, -1.0 },{ -1.0, -1.0 } };
 	double symbolPeriod = bitPeriod / samplesPerSymbol;
-
-	//t_real signalOutputPower_dBm = -20; 
-	t_real localOscillatorPower_dBm = 0; 
+	t_real localOscillatorPower_dBm = 0;
 	t_real localOscillatorPhase = 0;
-	//array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2)} };
 	t_real responsivity = 1;
-	t_real amplification = 1;
-	t_real noiseAmplitude = 1*pow(10,-6);
+	t_real amplification = pow(10, 3);
+	t_real noiseAmplitude = pow(10, -6);
 	//t_integer samplesToSkip = 0;
-	t_integer samplesToSkip = 0;
+	t_integer samplesToSkip = (int)(2 * 8 * samplesPerSymbol);//+ floor(samplesPerSymbol / 2))
 	//t_integer samplesToSkip = 2 * 8 * samplesPerSymbol; //+ floor(samplesPerSymbol / 2);
 	//8 is the number of samples used by the filter
 	t_real confidence = 0.95;
 	t_integer midReportSize = 0;
-	t_integer bufferLength = 13;
-	
+	t_integer bufferLength = 512;
+
 	//double clockPeriod = symbolPeriod;
 	//double samplingPeriod = 16;
 	
@@ -78,8 +59,7 @@ int main(){
 	MQamTransmitter B1{ vector<Signal*> { }, vector<Signal*> { &S1, &S0 } };
 	B1.setNumberOfBits(numberOfBitsGenerated);
 	B1.setOutputOpticalPower_dBm(signalOutputPower_dBm);
-	//B1.setMode(PseudoRandom);
-	B1.setMode(DeterministicAppendZeros);
+	B1.setMode(PseudoRandom);
 	B1.setBitStream("01");
 	B1.setBitPeriod(bitPeriod);
 	B1.setPatternLength(prbsPatternLength);
@@ -96,15 +76,15 @@ int main(){
 	//B2.setSamplerOpticalPower_dBm(signalOutputPower_dBm);
 	//B2.setTransferMatrix(transferMatrix);
 	B2.setResponsivity(responsivity);
-	//B2.setAmplification(amplification);
-	//B2.setNoiseAmplitude(noiseAmplitude);
+	B2.setAmplification(amplification);
+	B2.setNoiseAmplitude(noiseAmplitude);
 	B2.setSamplesToSkip(samplesToSkip);
 	//B2.setPosReferenceValue(0);
 	//B2.setNegReferenceValue(0);
 	B2.setSaveInternalSignals(true);
 	//B2.setCutoffFrequency(cutoffFrequency);
 	B2.setSamplingPeriod(symbolPeriod/samplesPerSymbol);
-	B2.setClockPeriod(symbolPeriod);
+	//B2.setClockPeriod(symbolPeriod);
 
 	//With BER measurement
 	BitErrorRate B3{ vector<Signal*> { &S2, &S0 }, vector<Signal*> { &S3 } };
@@ -112,7 +92,8 @@ int main(){
 	B3.setMidReportSize(midReportSize);
 
 	Sink B4{ vector<Signal*> { &S3 }, vector<Signal*> {} };
-	B4.setNumberOfSamples(numberOfBitsReceived*samplesPerSymbol);
+	//B4.setNumberOfSamples(-1);
+	//B4.setNumberOfSamples(numberOfBitsGenerated*samplesPerSymbol);
 	B4.setDisplayNumberOfSamples(true);
 
 	/*MQamTransmitter B1{ vector<Signal*> {}, vector<Signal*> { &S1, &S2 } };

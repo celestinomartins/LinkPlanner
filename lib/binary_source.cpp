@@ -29,6 +29,8 @@ BinarySource::BinarySource(vector<Signal*> &InputSig, vector<Signal*> &OutputSig
 }*/
 
 void BinarySource::initialize(void){
+	numberOfOutputSignals = outputSignals.size();
+
 	for (auto i = 0; i < numberOfOutputSignals; ++i) {
 		outputSignals[i]->symbolPeriod = bitPeriod;
 		outputSignals[i]->samplingPeriod = outputSignals[i]->symbolPeriod;

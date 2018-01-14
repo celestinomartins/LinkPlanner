@@ -40,8 +40,6 @@ bool Photodiode::runBlock(void) {
 
 	unsigned seed = chrono::system_clock::now().time_since_epoch().count();
 
-
-
 	generatorAmp1.seed(seed);
 	generatorAmp2.seed(seed);
 
